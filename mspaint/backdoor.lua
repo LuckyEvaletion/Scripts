@@ -19,7 +19,7 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = "MSHUB+ > Doors (the backdoor) | "..player.DisplayName,
+    Title = "MSHUB+ > BackDoors | "..player.DisplayName,
     Center = true,
     AutoShow = true,
     TabPadding = 5.5,
@@ -439,13 +439,6 @@ function handle_entity_bypasses(room)
     end
 end
 
--- people didnt check console so uh yea
---assert(ReplicatedStorage.GameData.Floor.Value == "Backdoor", "You are not in the backdoor gamemode")
-if not ReplicatedStorage.GameData.Floor.Value == "Backdoor" then
-    notify("You are not in the backdoor gamemode")
-    return
-end
-
 
 -- Tabs
 local player_tab = Window:AddTab("Player")
@@ -595,7 +588,7 @@ connections["HasteTimer"] = timer:GetPropertyChangedSignal("Value"):Connect(func
     
     if Toggles.notify_entity.Value then
         if timer.Value == 0 and not temp["timerhastenotified"] then
-            notify("Haste has spawned, please find a lever ASAP")
+            notify("Haste has spawned, please find a timer lever!")
             temp["timerhastenotified"] = true
         elseif timer.Value ~= 0 and temp["timerhastenotified"] then
             temp["timerhastenotified"] = false
@@ -779,4 +772,4 @@ ThemeManager:ApplyToTab(config_tab)
 
 SaveManager:LoadAutoloadConfig()
 
-notify("mspaint v1.0.1 loaded successfully!\nMade by w986 @mstudio45", 6)
+notify("mshub+ v1.0.1 loaded successfully! Made by w986 @mstudio45", 6)
