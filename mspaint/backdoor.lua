@@ -19,7 +19,7 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = "mspaint > Doors (the backdoor) | "..player.DisplayName,
+    Title = "MSHUB+ > Doors (the backdoor) | "..player.DisplayName,
     Center = true,
     AutoShow = true,
     TabPadding = 5.5,
@@ -770,8 +770,8 @@ SaveManager:IgnoreThemeSettings()
 
 SaveManager:SetIgnoreIndexes({ "Keybinds" })
 
-ThemeManager:SetFolder("mspaint")
-SaveManager:SetFolder("mspaint/backdoors")
+ThemeManager:SetFolder("mshub+")
+SaveManager:SetFolder("mshub+/backdoors")
 
 SaveManager:BuildConfigSection(config_tab)
 
@@ -779,5 +779,4 @@ ThemeManager:ApplyToTab(config_tab)
 
 SaveManager:LoadAutoloadConfig()
 
-notify("mspaint v1.0.1 loaded successfully!\nMade by upio (www.upio.dev)", 6)
-print("https://www.upio.dev/nick/nickeh")
+notify("mspaint v1.0.1 loaded successfully!\nMade by w986 @mstudio45", 6)
