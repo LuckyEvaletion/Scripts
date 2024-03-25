@@ -6,6 +6,7 @@ local player = game:GetService("Players").LocalPlayer
 
 local mainui = player.PlayerGui:WaitForChild("MainUI")
 local maingame = mainui.Initiator.Main_Game
+local hue = tick() % 5 / 5 
 
 local camera = workspace.CurrentCamera
 local remote_folder = ReplicatedStorage.RemotesFolder
