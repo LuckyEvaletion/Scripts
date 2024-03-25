@@ -97,7 +97,7 @@ function ESP(table)
     -- yall better not skid this 💀
     if typeof(table.Object) ~= "Instance" then assert("ESP function expected a Instance, not "..typeof(table.Object)) end
     if typeof(table.Text) ~= "string" then table.Text = "Unable to assign name\ndue to type error" end
-    if typeof(table.Color) ~= "Color3" then table.Color = Color3.fromRGB(255,255,255) end
+    if typeof(table.Color) ~= "Color3" then table.Color = Color3.fromHSV(hue, 1, 1) end
 
     local distanceFromPlayer = 0
     local colorOverride = table.Color
@@ -291,7 +291,7 @@ function handle_esp(room,table)
             local EntityESP = ESP({
                 Object = entity,
                 Text = entity.Name,
-                Color = Color3.fromRGB(255, 0, 0),
+                Color = Color3.fromHSV(hue, 1, 1),
                 entity = true
             })
 
@@ -321,7 +321,7 @@ function handle_esp(room,table)
                 local TimerESP = ESP({
                     Object = TimerLever,
                     Text = "Lever",
-                    Color = Color3.fromRGB(50, 168, 82)
+                    Color = Color3.fromHSV(hue, 1, 1)
                 })
 
                 ESPTable.Levers[#ESPTable.Levers+1] = TimerESP
@@ -342,7 +342,7 @@ function handle_esp(room,table)
                 local KeyESP = ESP({
                     Object = Key,
                     Text = "Key",
-                    Color = Color3.fromRGB(50, 168, 82)
+                    Color = Color3.fromHSV(hue, 1, 1)
                 })
     
                 ESPTable.Key[#ESPTable.Key+1] = KeyESP
@@ -365,7 +365,7 @@ function handle_esp(room,table)
                 local DoorESP = ESP({
                     Object = Door.Door,
                     Text = "Door",
-                    Color = Color3.new(1, 0.941176, 0)
+                    Color = Color3.fromHSV(hue, 1, 1)
                 })
 
                 ESPTable.Doors[#ESPTable.Doors+1] = DoorESP
@@ -385,7 +385,7 @@ function handle_esp(room,table)
                 local WardrobeESP = ESP({
                     Object = Wardrobe,
                     Text = "Wardrobe",
-                    Color = Color3.fromRGB(160,190,255)
+                    Color = Color3.fromHSV(hue, 1, 1)
                 })
     
                 ESPTable.Wardrobe[#ESPTable.Wardrobe+1] = WardrobeESP
@@ -401,7 +401,7 @@ function handle_esp(room,table)
                     local WardrobeESP = ESP({
                         Object = v,
                         Text = "Wardrobe",
-                        Color = Color3.fromRGB(160,190,255)
+                        Color = Color3.fromHSV(hue, 1, 1)
                     })
 
                     ESPTable.Wardrobe[#ESPTable.Wardrobe+1] = WardrobeESP
