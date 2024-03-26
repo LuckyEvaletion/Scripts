@@ -17,7 +17,7 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = "mspaint > Doors (the backdoor) | "..player.DisplayName,
+    Title = "mspaint > Doors | "..player.DisplayName,
     Center = true,
     AutoShow = true,
     TabPadding = 5.5,
