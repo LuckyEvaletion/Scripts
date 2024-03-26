@@ -17,7 +17,7 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = "mspaint > Doors | "..player.DisplayName,
+    Title = "BackDoor Hub | "..player.DisplayName,
     Center = true,
     AutoShow = true,
     TabPadding = 5.5,
@@ -65,7 +65,7 @@ local clock_screengui = Instance.new("ScreenGui") do
     TextLabel.BorderSizePixel = 0
     TextLabel.Size = UDim2.new(1, 0, 1, 0)
     TextLabel.Font = Enum.Font.Code
-    TextLabel.Text = "Not started"
+    TextLabel.Text = "1:00"
     TextLabel.TextColor3 = Library.FontColor
     TextLabel.TextScaled = true
     TextLabel.TextSize = 14
@@ -144,8 +144,8 @@ function ESP(table)
             DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
             OutlineColor = colorOverride,
             FillColor = colorOverride,
-            FillTransparency = 0.5,
-            OutlineTransparency = 0.25,
+            FillTransparency = 0.25,
+            OutlineTransparency = 0.75,
             Name = "_mspaintESP",
 
             Parent = table.Object
@@ -159,7 +159,7 @@ function ESP(table)
             Color3 = colorOverride,
             
             AlwaysOnTop = true,
-            Transparency = 0.45,
+            Transparency = 0.75,
             ZIndex = 10,
             Name = "_mspaintESP",
 
@@ -301,9 +301,9 @@ local config_group = config_tab:AddLeftGroupbox("Menu")
 
 movement_group:AddSlider("speed_boost", {
     Text = "Speed Boost",
-    Min = 0,
-    Max = 7,
-    Default = 0,
+    Min = 16,
+    Max = 21,
+    Default = 16,
     Rounding = 1,
     Compact = true
 })
@@ -801,5 +801,3 @@ ThemeManager:ApplyToTab(config_tab)
 
 SaveManager:LoadAutoloadConfig()
 
-notify("mspaint v1.0.2 loaded successfully!\nMade by upio (www.upio.dev)", 6)
-print("https://www.upio.dev/nick/nickeh")
