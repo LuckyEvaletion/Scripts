@@ -301,9 +301,9 @@ local config_group = config_tab:AddLeftGroupbox("Menu")
 
 movement_group:AddSlider("speed_boost", {
     Text = "Speed Boost",
-    Min = 16,
-    Max = 21,
-    Default = 16,
+    Min = 0,
+    Max = 6,
+    Default = 0,
     Rounding = 1,
     Compact = true
 })
@@ -497,7 +497,7 @@ function handle_esp(obj, options)
 
                 add_esp(v, {
                     Text = esp_text,
-                    Color = Color3.fromRGB(50, 168, 82),
+                    Color = Color3.fromRGB(201, 868, 892),
                     
                     Table = "Objectives"
                 })
