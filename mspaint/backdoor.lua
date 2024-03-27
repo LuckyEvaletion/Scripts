@@ -456,7 +456,7 @@ function handle_esp(obj, options)
         --[[
             esp_options = {
                 Text = "Lever",
-                Color = Color3.fromRGB(50, 168, 82),
+                Color = Color3.fromRGB(201, 868, 892),
                 Table = "Levers"
             }
         ]]
@@ -509,7 +509,7 @@ function handle_esp(obj, options)
 
             add_esp(Door.Door, {
                 Text = "Door",
-                Color = Color3.new(1, 0.941176, 0),
+                Color = Color3.fromRGB(201, 868, 892),
                 
                 Table = "Doors"
             })
@@ -520,7 +520,7 @@ function handle_esp(obj, options)
                 if v.Name == "Backdoor_Wardrobe" then
                     add_esp(v, {
                         Text = "Wardrobe",
-                        Color = Color3.fromRGB(160,190,255),
+                        Color = Color3.fromRGB(201, 868, 892),
                         
                         Table = "Wardrobe"
                     })
@@ -533,7 +533,7 @@ function handle_esp(obj, options)
                 if v.Name == "Backdoor_Wardrobe" then
                     add_esp(v, {
                         Text = "Wardrobe",
-                        Color = Color3.fromRGB(160,190,255),
+                        Color = Color3.fromRGB(201, 868, 892),
                         
                         Table = "Wardrobe"
                     })
@@ -549,7 +549,7 @@ function handle_esp(obj, options)
 
             add_esp(descendant.Door, {
                 Text = "Door",
-                Color = Color3.new(1, 0.941176, 0),
+                Color = Color3.fromRGB(201, 868, 892),
                 
                 Table = "Doors"
             })
@@ -562,7 +562,7 @@ function handle_esp(obj, options)
 
             add_esp(descendant, {
                 Text = "Wardrobe",
-                Color = Color3.fromRGB(160,190,255),
+                Color = Color3.fromRGB(201, 868, 892),
                 
                 Table = "Wardrobe"
             })
@@ -576,7 +576,7 @@ function handle_esp(obj, options)
             
             add_esp(descendant, {
                 Text = prettify_module_name(descendant:GetAttribute("LoadModule")),
-                Color = Color3.fromRGB(50, 168, 82),
+                Color = Color3.fromRGB(201, 868, 892),
                 
                 Table = "Objectives"
             })
@@ -596,7 +596,7 @@ function handle_esp(obj, options)
         if Toggles.entity_esp.Value and primary then
             add_esp(entity, {
                 Text = entity.Name,
-                Color = Color3.fromRGB(255, 0, 0),
+                Color = Color3.fromRGB(201, 868, 892),
                 
                 Table = "Entity",
                 entity = true
