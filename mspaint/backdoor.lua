@@ -17,10 +17,10 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    Title = "BackDoor Hub | "..player.DisplayName,
+    Title = "LuckyEvaletion Hub",
     Center = true,
     AutoShow = true,
-    TabPadding = 5.5,
+    TabPadding = 2.5,
     MenuFadeTime = 0
 })
 
@@ -159,7 +159,7 @@ function ESP(table)
             Color3 = colorOverride,
             
             AlwaysOnTop = true,
-            Transparency = 0.75,
+            Transparency = 1.5,
             ZIndex = 10,
             Name = "_mspaintESP",
 
@@ -287,8 +287,8 @@ end
 
 -- Tabs
 local player_tab = Window:AddTab("Player")
-local exploit_tab = Window:AddTab("Exploits")
-local visual_tab = Window:AddTab("Visuals")
+local visual_tab = Window:AddTab("ESP + Show")
+local exploit_tab = Window:AddTab("Anti")
 local config_tab = Window:AddTab("Config")
 
 -- Group boxes
@@ -332,7 +332,7 @@ main_visual_group:AddToggle("haste_clock", {
     Tooltip = "Enables clock indicating how much time is left in the game",
 })
 
-main_visual_group:AddToggle("fullbright", {
+movement_group:AddToggle("fullbright", {
     Text = "Fullbright",
     Default = false,
     Tooltip = "enables fullbright",
@@ -344,7 +344,7 @@ main_visual_group:AddToggle("notify_entity", {
     Tooltip = "Notifies when entities spawn",
 })
 
-main_visual_group:AddSlider("fov_slider", {
+movement_group:AddSlider("fov_slider", {
     Text = "Field of view",
     Min = 30,
     Max = 120,
