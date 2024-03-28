@@ -456,7 +456,8 @@ function handle_esp(obj, options)
         --[[
             esp_options = {
                 Text = "Lever",
-                Color = Color3.fromRGB(201, 868, 892),
+                Color = --Pink Lighting
+Color3.fromRGB(811, 21, 892),
                 Table = "Levers"
             }
         ]]
@@ -497,8 +498,8 @@ function handle_esp(obj, options)
 
                 add_esp(v, {
                     Text = esp_text,
-                    Color = Color3.fromRGB(201, 868, 892),
-                    
+                    Color = --Pink Lighting
+Color3.fromRGB(811, 21, 892),
                     Table = "Objectives"
                 })
             end
@@ -509,8 +510,8 @@ function handle_esp(obj, options)
 
             add_esp(Door.Door, {
                 Text = "Door",
-                Color = Color3.fromRGB(201, 868, 892),
-                
+                Color = --Green Blue Lighting
+Color3.fromRGB(201, 2831, 892),
                 Table = "Doors"
             })
         end
@@ -520,7 +521,8 @@ function handle_esp(obj, options)
                 if v.Name == "Backdoor_Wardrobe" then
                     add_esp(v, {
                         Text = "Wardrobe",
-                        Color = Color3.fromRGB(201, 868, 892),
+                        Color = -- Yellow Lighting
+Color3.fromRGB(7201, 2721, 892),
                         
                         Table = "Wardrobe"
                     })
@@ -533,7 +535,8 @@ function handle_esp(obj, options)
                 if v.Name == "Backdoor_Wardrobe" then
                     add_esp(v, {
                         Text = "Wardrobe",
-                        Color = Color3.fromRGB(201, 868, 892),
+                        Color = -- Yellow Lighting
+Color3.fromRGB(7201, 2721, 892),
                         
                         Table = "Wardrobe"
                     })
@@ -549,7 +552,8 @@ function handle_esp(obj, options)
 
             add_esp(descendant.Door, {
                 Text = "Door",
-                Color = Color3.fromRGB(201, 868, 892),
+                Color = --Green Blue Lighting
+Color3.fromRGB(201, 2831, 892),
                 
                 Table = "Doors"
             })
@@ -562,7 +566,8 @@ function handle_esp(obj, options)
 
             add_esp(descendant, {
                 Text = "Wardrobe",
-                Color = Color3.fromRGB(201, 868, 892),
+                Color = -- Yellow Lighting
+Color3.fromRGB(7201, 2721, 892),
                 
                 Table = "Wardrobe"
             })
@@ -576,8 +581,8 @@ function handle_esp(obj, options)
             
             add_esp(descendant, {
                 Text = prettify_module_name(descendant:GetAttribute("LoadModule")),
-                Color = Color3.fromRGB(201, 868, 892),
-                
+                Color = -- Blue Lighting
+ Color3.fromRGB(128, 71, 750),
                 Table = "Objectives"
             })
 
@@ -592,11 +597,12 @@ function handle_esp(obj, options)
             notify(notification_msg[entity.Name], entity)
         end
 
-        local primary = entity:WaitForChild("Core", 1.5) or entity:WaitForChild("Main", 1.5)
+        local primary = entity:WaitForChild("Core", 3) or entity:WaitForChild("Main", 3)
         if Toggles.entity_esp.Value and primary then
             add_esp(entity, {
                 Text = entity.Name,
-                Color = Color3.fromRGB(201, 868, 892),
+                Color = --Pink Lighting
+Color3.fromRGB(811, 21, 892),
                 
                 Table = "Entity",
                 entity = true
