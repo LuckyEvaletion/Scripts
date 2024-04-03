@@ -33,14 +33,6 @@ local ESPTable = {
 
 local connections = {}
 
-local temp = {
-    timerhastenotified = false
-}
-
-local notification_msg = {
-    BackdoorLookman = "Lookman spawned, look away!",
-    BackdoorRush = "Blitz has spawned, quick find a hiding spot!"
-}
 
 local clock_screengui = Instance.new("ScreenGui") do
     local Frame = Instance.new("Frame")
@@ -265,19 +257,6 @@ function ESP(table)
     return ret
 end
 
-function format_timer(seconds)
-	local minutes = seconds / 60
-	local seconds = seconds % 60
-
-    -- too lazy to do string.format
-    if seconds < 10 then
-        seconds = "0" .. tostring(seconds)
-    end
-	
-	return tostring(math.floor(minutes)) .. ":" .. tostring(seconds)
-end
-
-
 
 -- Tabs
 local player_tab = Window:AddTab("Player")
@@ -302,40 +281,10 @@ movement_group:AddSlider("speed_boost", {
     Compact = true
 })
 
-bypass_group:AddToggle("anti_jumpscare", {
-    Text = "Anti Haste Jumpscare",
-    Default = false,
-    Tooltip = "Prevents you from from getting jumpscared by the haste"
-})
-
-bypass_group:AddToggle("anti_vacuum", {
-    Text = "Anti Vacuum",
-    Default = false,
-    Tooltip = "Prevents you from from dying to fake doors"
-})
-
-bypass_group:AddToggle("anti_lookman", {
-    Text = "Anti Lookman",
-    Default = false,
-    Tooltip = "Prevents you from from dying to lookman"
-})
-
-main_visual_group:AddToggle("haste_clock", {
-    Text = "Haste Clock",
-    Default = false,
-    Tooltip = "Enables clock indicating how much time is left in the game",
-})
-
 movement_group:AddToggle("fullbright", {
     Text = "Fullbright",
     Default = false,
     Tooltip = "enables fullbright",
-})
-
-main_visual_group:AddToggle("notify_entity", {
-    Text = "Notify Entity",
-    Default = false,
-    Tooltip = "Notifies when entities spawn",
 })
 
 movement_group:AddSlider("fov_slider", {
@@ -383,14 +332,6 @@ esp_settings_group:AddToggle("tracerEspToggle", {
     Tooltip = "Shows a line from the object to the center of the screen"
 })
 
-local haste = ReplicatedStorage.FloorClientStuff.ClientRemote.Haste
-Toggles.anti_jumpscare:OnChanged(function(value)
-    if value then
-        haste.Parent = game:GetService("CoreGui")
-    else
-        haste.Parent = ReplicatedStorage.FloorClientStuff.ClientRemote
-    end
-end)
 
 Toggles.fullbright:OnChanged(function(value)
     if value then
@@ -412,40 +353,8 @@ Toggles.fullbright:OnChanged(function(value)
 end)
 
 local timer = ReplicatedStorage.FloorClientStuff.DigitalTimer
-local timerlabel = clock_screengui.Frame.TextLabel
 
-connections["HasteTimer"] = timer:GetPropertyChangedSignal("Value"):Connect(function()
-    if Toggles.haste_clock.Value then
-        timerlabel.Text = format_timer(timer.Value)
-    end
-    
-    if Toggles.notify_entity.Value then
-        if timer.Value == 0 and not temp["timerhastenotified"] then
-            notify("Haste has spawned, please find a lever ASAP")
-            temp["timerhastenotified"] = true
-        elseif timer.Value ~= 0 and temp["timerhastenotified"] then
-            temp["timerhastenotified"] = false
-        end
-    end
-end)
 
-Toggles.haste_clock:OnChanged(function(value)
-    if value then
-        clock_screengui.Parent = gethui() or game:GetService("CoreGui") or player:WaitForChild("PlayerGui")
-    else
-        clock_screengui.Parent = ReplicatedStorage
-    end    
-end)
-
-local esp_target_names = {
-    Entity = {"BackdoorLookman", "BackdoorRush"},
-}
-
-function handle_esp(obj, options)
-    local is_toggle_callback = options.is_toggle_callback ~= nil
-    local is_descendant = options.is_descendant_connection ~= nil
-    local is_entity = options.is_entity_connection ~= nil
-    
     local function add_esp(esp_obj, esp_options)
         --[[
             esp_options = {
@@ -682,9 +591,6 @@ connections["main"] = RunService.RenderStepped:Connect(function()
         humanoid:SetAttribute("SpeedBoostBehind", Options.speed_boost.Value)
     end
 
-    if workspace:FindFirstChild("BackdoorLookman") and Toggles.anti_lookman.Value then
-        remote_folder.MotorReplication:FireServer(0,-90,0, false)
-    end
 
 end)
 
@@ -707,38 +613,7 @@ end)
 
 connections["exploit_childadded"] = workspace.CurrentRooms.ChildAdded:Connect(function(room)
     
-    -- anti vacuum
-    if room:WaitForChild("ClosetSpace", 2) and Toggles.anti_vacuum.Value then
-        local fake_doors = {}
-        for i,v in pairs(room:GetChildren()) do
-            if v.Name == "ClosetSpace" then
-                fake_doors[#fake_doors+1] = v
-            end
-        end
-
-        local function handle_door(door)
-            door:WaitForChild("Collision")
-                
-            while not Library.Unloaded and door ~= nil and door:IsDescendantOf(workspace) do
-                door.Collision.CanTouch = not Toggles.anti_vacuum.Value
-                door.Collision.CanCollide = not Toggles.anti_vacuum.Value
-                task.wait()
-            end
-
-            if Library.Unloaded and door and door:IsDescendantOf(workspace) then
-                door.Collision.CanTouch = true
-                door.Collision.CanCollide = true
-            end
-        end
-
-        for _,door in pairs(fake_doors) do
-            task.spawn(handle_door, door)
-        end
-    end
-
-
-end)
-
+    
 for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
     handle_esp(v, {
         is_toggle_callback = true
@@ -760,9 +635,6 @@ Library:OnUnload(function()
 
     table.clear(connections)
 
-    if Toggles.anti_jumpscare.Value then
-        haste.Parent = ReplicatedStorage.FloorClientStuff.ClientRemote
-    end
 
     clock_screengui:Destroy()
     Library.Unloaded = true
