@@ -277,12 +277,6 @@ function format_timer(seconds)
 	return tostring(math.floor(minutes)) .. ":" .. tostring(seconds)
 end
 
--- people didnt check console so uh yea
---assert(ReplicatedStorage.GameData.Floor.Value == "Backdoor", "You are not in the backdoor gamemode")
-if not ReplicatedStorage.GameData.Floor.Value == "Backdoor" then
-    notify("You are not in the backdoor gamemode")
-    return
-end
 
 
 -- Tabs
